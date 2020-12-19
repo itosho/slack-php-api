@@ -99,6 +99,14 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
      * @var float|string|null
      */
     protected $ts;
+    /**
+     * @var string|null
+     */
+    protected $channelId;
+    /**
+     * @var string|null
+     */
+    protected $originalUrl;
 
     /**
      * @return ObjsMessageAttachmentsItemActionsItem[]|null
@@ -366,6 +374,30 @@ class ObjsMessageAttachmentsItem extends \ArrayObject
     public function setTs($ts): self
     {
         $this->ts = $ts;
+
+        return $this;
+    }
+
+    public function getChannelId(): ?string
+    {
+        return $this->channelId;
+    }
+
+    public function setChannelId(?string $channelId): self
+    {
+        $this->channelId = $channelId;
+
+        return $this;
+    }
+
+    public function getOriginalUrl(): ?string
+    {
+        return $this->originalUrl;
+    }
+
+    public function setOriginalUrl(?string $originalUrl): self
+    {
+        $this->originalUrl = $originalUrl;
 
         return $this;
     }
