@@ -190,6 +190,18 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
         } elseif (\array_key_exists('ts', $data) && null === $data['ts']) {
             $object->setTs(null);
         }
+        if (\array_key_exists('channel_id', $data) && null !== $data['channel_id']) {
+            $object->setChannelId($data['channel_id']);
+            unset($data['channel_id']);
+        } elseif (\array_key_exists('channel_id', $data) && null === $data['channel_id']) {
+            $object->setChannelId(null);
+        }
+        if (\array_key_exists('original_url', $data) && null !== $data['original_url']) {
+            $object->setOriginalUrl($data['original_url']);
+            unset($data['channel_id']);
+        } elseif (\array_key_exists('original_url', $data) && null === $data['original_url']) {
+            $object->setOriginalUrl(null);
+        }
         foreach ($data as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
                 $object[$key] = $value_3;
@@ -276,6 +288,12 @@ class ObjsMessageAttachmentsItemNormalizer implements DenormalizerInterface, Nor
                 $value_2 = $object->getTs();
             }
             $data['ts'] = $value_2;
+        }
+        if (null !== $object->getChannelId()) {
+            $data['channel_id'] = $object->getChannelId();
+        }
+        if (null !== $object->getOriginalUrl()) {
+            $data['original_url'] = $object->getOriginalUrl();
         }
         foreach ($object as $key => $value_3) {
             if (preg_match('/.*/', (string) $key)) {
